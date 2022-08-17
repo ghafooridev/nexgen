@@ -3,10 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -p 3300",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "eslint \"**/*.{tsx,ts,js}\""
   },
   "dependencies": {
     "@hookform/resolvers": "^2.9.7",
@@ -37,5 +37,17 @@
     "lint-staged": "^7.3.0",
     "prettier": "^2.7.1",
     "typescript": "4.7.4"
-  }
+  },
+  "husky": {
+		"hooks": {
+			"pre-commit": "lint-staged",
+			"post-merge": "(git-branch-is master && yarn version minor || (git-branch-is develop && yarn --no-git-tag-version version patch)"
+		}
+	},
+	"lint-staged": {
+		"*.{tsx,ts,js}": [
+			"prettier --write .",
+			"yarn lint"
+		]
+	}
 }

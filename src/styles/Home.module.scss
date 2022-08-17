@@ -83,7 +83,8 @@
 		border-radius: 0;
 		padding: 20px;
 	}
-	.row {
+	.row,
+	.action {
 		flex-direction: column;
 	}
 	.description {

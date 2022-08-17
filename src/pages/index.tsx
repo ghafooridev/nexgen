@@ -1,14 +1,28 @@
-import type { NextPage } from "next"
+import { useEffect } from "react"
 import Image from "next/image"
 import { ToastContainer, toast } from "react-toastify"
 import { useForm } from "react-hook-form"
 import { yupResolver } from "@hookform/resolvers/yup"
 import * as yup from "yup"
-
 import { EXPERIENCE_LEVEL, MESSAGES } from "@/constants"
 
-import styles from "../styles/Home.module.scss"
+import useFetch from "@/hooks/useFetch/useFetch"
+
 import "react-toastify/dist/ReactToastify.css"
+import styles from "../styles/Home.module.scss"
+
+import type { NextPage } from "next"
+interface RegisterValue {
+	firstName?: string
+	lastName?: string
+	phone?: string
+	email: string
+	password: string
+	rePassword: string
+	bio?: string
+	gender?: string
+	level?: string
+}
 
 const Home: NextPage = () => {
 	const schema = yup.object().shape({
@@ -21,36 +35,48 @@ const Home: NextPage = () => {
 			.string()
 			.oneOf([yup.ref("password"), null], "Confirm Password does not mach with Password")
 			.required(),
+		bio: yup.string(),
+		gender: yup.string(),
+		level: yup.string(),
 	})
 
 	const {
 		register,
 		handleSubmit,
 		formState: { errors },
-	} = useForm({
-		resolver: yupResolver(schema),
-	})
+	} = useForm({ resolver: yupResolver(schema) })
 
-	const onSubmit = values => {
-		console.log(values)
+	const { response, sendData, loading } = useFetch({ url: "user", method: "POST" })
 
-		toast.success(MESSAGES.SUCCESSFUL_REGISTER, {
-			position: toast.POSITION.BOTTOM_CENTER,
+	const onSubmit = (values: RegisterValue) => {
+		return sendData({
+			data: {
+				...values,
+			},
 		})
 	}
 
 	const ErrorContainer = () => {
 		const errorElements = []
+
 		for (const error in errors) {
 			errorElements.push(
 				<li key={error} className={styles.error}>
-					{errors[error]?.message}
+					{errors[error]?.message?.toString()}
 				</li>
 			)
 		}
 
 		return errorElements
 	}
+
+	useEffect(() => {
+		if (response) {
+			toast.success(MESSAGES.SUCCESSFUL_REGISTER, {
+				position: toast.POSITION.BOTTOM_CENTER,
+			})
+		}
+	}, [response])
 
 	return (
 		<div className={styles.container}>
@@ -120,7 +146,7 @@ const Home: NextPage = () => {
 					</span>
 					<span>
 						<div className={styles.radio}>
-							<input type="radio" id="M" value="M" {...register("gender")} />
+							<input type="radio" id="M" value="M" checked {...register("gender")} />
 							<label htmlFor="M">Male</label>
 						</div>
 						<div className={styles.radio}>
@@ -136,7 +162,7 @@ const Home: NextPage = () => {
 				</div>
 				<div className={styles.action}>
 					<ul>{ErrorContainer()}</ul>
-					<button type="submit">Register</button>
+					<button type="submit">{loading ? "Loading..." : "Register"}</button>
 				</div>
 			</form>
 			<ToastContainer />
