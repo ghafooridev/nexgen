@@ -4,4 +4,8 @@ export const EXPERIENCE_LEVEL=[
     {label:'Mid-Level',value:'Mid-Level'},
     {label:'Senior',value:'Senior'},
     {label:'Director',value:'director'}
-]
+];
+
+export const MESSAGES={
+    SUCCESSFUL_REGISTER:'Your account has been created successfully'
+}

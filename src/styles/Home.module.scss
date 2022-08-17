@@ -1,74 +1,92 @@
+@use "variable";
+
 .container {
-  height:100vh;
- display: flex;
- justify-content: center;
- margin:0 auto;
- align-items: center;
- padding: 250px;
- background: -webkit-linear-gradient(left, #2BC0E4, #EAECC6);
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	margin: 0 auto;
+	align-items: center;
+	padding: 250px;
+	background: -webkit-linear-gradient(left, #2bc0e4, #eaecc6);
 }
-.card{
-  background: #f8f9fa;
-  border-top-left-radius: 10% 50%;
-  border-bottom-left-radius: 10% 50%;
-  padding:20px 100px;
- flex:3;
- & h2{
-  padding: 10px 20px;
- }
-.row{
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  & span{
-    width: 100%;
-    padding: 10px 20px;
-    display: flex;
-    
-    & input, & select { 
-      width: 100%;
-      height: 35px;
-    }
-   
-    .radio{
-      display: flex;
-      align-items: center;
-    }
-  }
-  & textarea{
-    width: 100%;
-    height: 70px;
-    resize: none;
-  }
-  & button{
-    margin: 10px 20px;
-  }
-}
-}
+.card {
+	background: #f8f9fa;
+	border-top-left-radius: 10% 50%;
+	border-bottom-left-radius: 10% 50%;
+	padding: 20px 100px;
+	flex: 3;
+	& h2 {
+		padding: 10px 20px;
+	}
+	.row {
+		display: flex;
+		justify-content: flex-end;
+		align-items: center;
+		& span {
+			width: 100%;
+			padding: 10px 20px;
+			display: flex;
 
+			& input,
+			& select {
+				width: 100%;
+				height: 35px;
+				&.error {
+					border: 1px solid variable.$error-color !important;
+					box-shadow: 0 0 5px variable.$error-color !important;
+					color: variable.$error-color;
+				}
+			}
 
-.description{
-  display:flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  flex:1;
-  padding: 20px;
-  text-align: center;
-  & h1{
-    padding: 0 20px;
-  }
-  & img{
-    
-  }
+			.radio {
+				display: flex;
+				align-items: center;
+			}
+		}
+		& textarea {
+			width: 100%;
+			height: 70px;
+			resize: none;
+		}
+	}
+}
+.action {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin: 10px 20px;
 }
 
-
-
+.description {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	flex: 1;
+	padding: 20px;
+	text-align: center;
+	& h1 {
+		padding: 0 20px;
+	}
+}
+.error {
+	color: variable.$error-color;
+}
 @media (max-width: 600px) {
-  .grid {
-    width: 100%;
-    flex-direction: column;
-  }
+	.container {
+		padding: 0;
+		flex-direction: column;
+	}
+	.card {
+		width: 100%;
+		flex-direction: column;
+		border-radius: 0;
+		padding: 20px;
+	}
+	.row {
+		flex-direction: column;
+	}
+	.description {
+		width: 100%;
+	}
 }
-
