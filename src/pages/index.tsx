@@ -12,17 +12,6 @@ import "react-toastify/dist/ReactToastify.css"
 import styles from "../styles/Home.module.scss"
 
 import type { NextPage } from "next"
-interface RegisterValue {
-	firstName?: string
-	lastName?: string
-	age?: number
-	email: string
-	password: string
-	confirmPassword: string
-	bio?: string
-	gender?: string
-	level?: string
-}
 
 const Home: NextPage = () => {
 	const schema = yup.object().shape({
@@ -48,7 +37,7 @@ const Home: NextPage = () => {
 
 	const { response, sendData, loading } = useFetch({ url: "user", method: "POST" })
 
-	const onSubmit = (values: RegisterValue) => {
+	const onSubmit = (values: any) => {
 		return sendData({
 			data: {
 				...values,
