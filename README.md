@@ -13,32 +13,34 @@ These are mostly guidelines, not rules. Use your best judgment, and feel free to
 
 2.  All custom hooks used in components should have a folder inside `src/hooks` and all of them should start the with "use" keyword.
 
-3. All `pages` that refer to a specific route in the NextJS application should be defined in `src/pages` (this is a NextJS convention). This folder also includes the predefined files to manage NextJS behavior like `_app.tsx`
+3.  All `pages` that refer to a specific route in the NextJS application should be defined in `src/pages` (this is a NextJS convention). This folder also includes the predefined files to manage NextJS behavior like `_app.tsx`
 
-4. All global styles should be inside `src/styles`. It contains the styles for each particular page and the name of each style file should be represented by the name of the page followed by `.module.scss`.
+4.  All global styles should be inside `src/styles`. It contains the styles for each particular page and the name of each style file should be represented by the name of the page followed by `.module.scss`.
 
-5. The editorconfig and prettierrc file contains all attribute for corresponding editor code style in each IDEs
+5.  The editorconfig and prettierrc file contains all attribute for corresponding editor code style in each IDEs
 
-6. eslint file expose the rules for linting the project 
+6.  eslint file expose the rules for linting the project
 
-7. tsconfig and next.config file include the configuration of TypeScript and Next
+7.  tsconfig and next.config file include the configuration of TypeScript and Next
+
 ---
 
 # Coding style
 
- The import/order plugin, which is configured with eslint by this [document](https://github.com/import-js/eslint-plugin-import), decides the order of all the imports. They should be listed according to the following ordering:
+The import/order plugin, which is configured with eslint by this [document](https://github.com/import-js/eslint-plugin-import), decides the order of all the imports. They should be listed according to the following ordering:
 
-   - 1. Built-in packages/modules
-   - 2. External packages/modules/functions
-   - 3. Internal packages/modules/functions
-   - 4. Parent components
-   - 5. Sibling components
-   - 6. Types and interfaces
+- 1.  Built-in packages/modules
+- 2.  External packages/modules/functions
+- 3.  Internal packages/modules/functions
+- 4.  Parent components
+- 5.  Sibling components
+- 6.  Types and interfaces
 
 ---
+
 # References
 
- we are using some frameworks and third parties in this app and we could refer to them by following links
+we are using some frameworks and third parties in this app and we could refer to them by following links
 
 - NextJS official documentation [here](https://nextjs.org/docs)
 - ReactJS official documentation [here](https://reactjs.org/)

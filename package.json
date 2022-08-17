@@ -1,44 +1,44 @@
 {
-  "name": "nexgen",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev -p 3300",
-    "build": "next build",
-    "start": "next start",
-    "lint": "eslint \"**/*.{tsx,ts,js}\""
-  },
-  "dependencies": {
-    "@hookform/resolvers": "^2.9.7",
-    "axios": "^0.27.2",
-    "next": "12.2.5",
-    "path": "^0.12.7",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "react-hook-form": "^7.34.2",
-    "react-toastify": "^9.0.8",
-    "sass": "^1.54.0",
-    "yup": "^0.32.11"
-  },
-  "devDependencies": {
-    "@types/node": "18.7.6",
-    "@types/react": "18.0.17",
-    "@types/react-dom": "18.0.6",
-    "@typescript-eslint/eslint-plugin": "^5.30.6",
-    "@typescript-eslint/parser": "^5.30.6",
-    "eslint": "8.22.0",
-    "eslint-config-next": "12.2.5",
-    "eslint-config-prettier": "^8.5.0",
-    "eslint-plugin-import": "^2.26.0",
-    "eslint-plugin-prettier": "^4.2.1",
-    "eslint-plugin-react": "^7.30.1",
-    "eslint-plugin-react-hooks": "^4.6.0",
-    "husky": "^3.1.0",
-    "lint-staged": "^7.3.0",
-    "prettier": "^2.7.1",
-    "typescript": "4.7.4"
-  },
-  "husky": {
+	"name": "nexgen",
+	"version": "0.1.0",
+	"private": true,
+	"scripts": {
+		"dev": "next dev -p 3300",
+		"build": "next build",
+		"start": "next start",
+		"lint": "eslint \"**/*.{tsx,ts,js}\""
+	},
+	"dependencies": {
+		"@hookform/resolvers": "^2.9.7",
+		"axios": "^0.27.2",
+		"next": "12.2.5",
+		"path": "^0.12.7",
+		"react": "18.2.0",
+		"react-dom": "18.2.0",
+		"react-hook-form": "^7.34.2",
+		"react-toastify": "^9.0.8",
+		"sass": "^1.54.0",
+		"yup": "^0.32.11"
+	},
+	"devDependencies": {
+		"@types/node": "18.7.6",
+		"@types/react": "18.0.17",
+		"@types/react-dom": "18.0.6",
+		"@typescript-eslint/eslint-plugin": "^5.30.6",
+		"@typescript-eslint/parser": "^5.30.6",
+		"eslint": "8.22.0",
+		"eslint-config-next": "12.2.5",
+		"eslint-config-prettier": "^8.5.0",
+		"eslint-plugin-import": "^2.26.0",
+		"eslint-plugin-prettier": "^4.2.1",
+		"eslint-plugin-react": "^7.30.1",
+		"eslint-plugin-react-hooks": "^4.6.0",
+		"husky": "^3.1.0",
+		"lint-staged": "^7.3.0",
+		"prettier": "^2.7.1",
+		"typescript": "4.7.4"
+	},
+	"husky": {
 		"hooks": {
 			"pre-commit": "lint-staged",
 			"post-merge": "(git-branch-is master && yarn version minor || (git-branch-is develop && yarn --no-git-tag-version version patch)"

@@ -1,5 +1,5 @@
 {
-  "env": {
+	"env": {
 		"browser": true,
 		"es2020": true,
 		"jest": true,
@@ -43,16 +43,7 @@
 		"import/order": [
 			"error",
 			{
-				"groups": [
-					"builtin",
-					"external",
-					"internal",
-					"parent",
-					"sibling",
-					"index",
-					"object",
-					"type"
-				]
+				"groups": ["builtin", "external", "internal", "parent", "sibling", "index", "object", "type"]
 			}
 		]
 	}

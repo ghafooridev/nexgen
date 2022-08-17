@@ -7,7 +7,7 @@ const publicDir = path.join(__dirname, "public")
 const stylesDir = path.join(srcDir, "styles")
 
 const nextConfig = {
-  webpack(config) {
+	webpack(config) {
 		// Resolve absolute imports
 		config.resolve.alias = {
 			...(config.resolve.alias || {}),
