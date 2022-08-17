@@ -15,10 +15,10 @@ import type { NextPage } from "next"
 interface RegisterValue {
 	firstName?: string
 	lastName?: string
-	phone?: string
+	age?: number
 	email: string
 	password: string
-	rePassword: string
+	confirmPassword: string
 	bio?: string
 	gender?: string
 	level?: string
@@ -28,10 +28,10 @@ const Home: NextPage = () => {
 	const schema = yup.object().shape({
 		firstName: yup.string(),
 		lastName: yup.string(),
-		phone: yup.string(),
+		age: yup.number().min(18).max(99),
 		email: yup.string().email().required(),
 		password: yup.string().min(4).required(),
-		rePassword: yup
+		confirmPassword: yup
 			.string()
 			.oneOf([yup.ref("password"), null], "Confirm Password does not mach with Password")
 			.required(),
@@ -83,7 +83,7 @@ const Home: NextPage = () => {
 			<aside className={styles.description}>
 				<Image src={"/logo.png"} alt="Logo" width={150} height={45} />
 				<h3>Welcome</h3>
-				<p>Register to join a lot of intelligent developers</p>
+				<p>Create Account to join our intelligent team</p>
 			</aside>
 			<form className={styles.card} onSubmit={handleSubmit(onSubmit)}>
 				<h2>Register</h2>
@@ -107,10 +107,10 @@ const Home: NextPage = () => {
 					</span>
 					<span>
 						<input
-							type="text"
-							className={errors.phone?.message && styles.error}
-							placeholder={"Phone Number *"}
-							{...register("phone")}
+							type="number"
+							className={errors.age?.message && styles.error}
+							placeholder={"Age"}
+							{...register("age")}
 						/>
 					</span>
 				</div>
@@ -128,8 +128,8 @@ const Home: NextPage = () => {
 						<input
 							type="password"
 							placeholder="Confirm Password *"
-							{...register("rePassword")}
-							className={errors.rePassword?.message && styles.error}
+							{...register("confirmPassword")}
+							className={errors.confirmPassword?.message && styles.error}
 						/>
 					</span>
 				</div>
